@@ -1,0 +1,305 @@
+{
+  "chapters": [
+    {
+      "chapter": 1,
+      "title": "1. O sono como sistema regulado",
+      "references": [
+        "(Borbély 1982)",
+        "(Daan, Beersma, e Borbély 1984)",
+        "(Borbély et al. 2016)",
+        "(Espie 2025)"
+      ]
+    },
+    {
+      "chapter": 2,
+      "title": "2. O que é transtorno de insônia",
+      "references": [
+        "(Edinger et al. 2021)",
+        "(Riemann et al. 2023)",
+        "(Department of Veterans Affairs and Department of Defense 2025)",
+        "(Qaseem et al. 2016)"
+      ]
+    },
+    {
+      "chapter": 3,
+      "title": "3. Por que a insônia se mantém",
+      "references": [
+        "(Spielman, Saskin, e Thorpy 1987)",
+        "(Perlis et al. 2005)",
+        "(Edinger e Carney 2014)",
+        "(Espie 2025)"
+      ]
+    },
+    {
+      "chapter": 4,
+      "title": "4. Modelos contemporâneos de manutenção",
+      "references": [
+        "(Harvey 2002)",
+        "(Espie et al. 2006)",
+        "(Furukawa et al. 2024)",
+        "(Espie 2025)"
+      ]
+    },
+    {
+      "chapter": 5,
+      "title": "5. Entrevista clínica do sono",
+      "references": [
+        "(Riemann et al. 2023)",
+        "(Department of Veterans Affairs and Department of Defense 2025)",
+        "(Edinger e Carney 2014)",
+        "(Espie 2025)"
+      ]
+    },
+    {
+      "chapter": 6,
+      "title": "6. Diário do sono e métricas clínicas",
+      "references": [
+        "(Riemann et al. 2023)",
+        "(Department of Veterans Affairs and Department of Defense 2025)",
+        "(Perlis et al. 2005)",
+        "(Edinger e Carney 2014)"
+      ]
+    },
+    {
+      "chapter": 7,
+      "title": "7. Medidas, instrumentos e monitoramento",
+      "references": [
+        "(Riemann et al. 2023)",
+        "(Department of Veterans Affairs and Department of Defense 2025)",
+        "(Edinger et al. 2021)",
+        "(Furukawa et al. 2024)"
+      ]
+    },
+    {
+      "chapter": 8,
+      "title": "8. Diagnóstico diferencial e encaminhamento",
+      "references": [
+        "(Riemann et al. 2023)",
+        "(Department of Veterans Affairs and Department of Defense 2025)",
+        "(Hertenstein et al. 2022)",
+        "(Espie 2025)"
+      ]
+    },
+    {
+      "chapter": 9,
+      "title": "9. Formulação de caso em TCC-I",
+      "references": [
+        "(Spielman, Saskin, e Thorpy 1987)",
+        "(Harvey 2002)",
+        "(Perlis et al. 2005)",
+        "(Espie 2025)"
+      ]
+    },
+    {
+      "chapter": 10,
+      "title": "10. Psicoeducação que muda comportamento",
+      "references": [
+        "(Perlis et al. 2005)",
+        "(Edinger e Carney 2014)",
+        "(Espie 2025)",
+        "(Edinger et al. 2021)"
+      ]
+    },
+    {
+      "chapter": 11,
+      "title": "11. Controle de estímulos",
+      "references": [
+        "(Bootzin 1972)",
+        "(Demers Verreault et al. 2024)",
+        "(Edinger et al. 2021)",
+        "(Perlis et al. 2005)"
+      ]
+    },
+    {
+      "chapter": 12,
+      "title": "12. Restrição e compressão do tempo na cama",
+      "references": [
+        "(Spielman, Saskin, e Thorpy 1987)",
+        "(Edinger et al. 2021)",
+        "(Furukawa et al. 2024)",
+        "(Department of Veterans Affairs and Department of Defense 2025)",
+        "(Perlis et al. 2005)"
+      ]
+    },
+    {
+      "chapter": 13,
+      "title": "13. Ritmo circadiano, regularidade e rotina",
+      "references": [
+        "(Borbély et al. 2016)",
+        "(Riemann et al. 2023)",
+        "(Department of Veterans Affairs and Department of Defense 2025)",
+        "(Espie 2025)"
+      ]
+    },
+    {
+      "chapter": 14,
+      "title": "14. Intervenções cognitivas",
+      "references": [
+        "(Harvey 2002)",
+        "(Espie et al. 2006)",
+        "(Furukawa et al. 2024)",
+        "(Perlis et al. 2005)"
+      ]
+    },
+    {
+      "chapter": 15,
+      "title": "15. Preocupação, vigilância e esforço para dormir",
+      "references": [
+        "(Espie et al. 2006)",
+        "(Harvey 2002)",
+        "(Espie 2025)",
+        "(Furukawa et al. 2024)"
+      ]
+    },
+    {
+      "chapter": 16,
+      "title": "16. Higiene do sono no lugar certo",
+      "references": [
+        "(Edinger et al. 2021)",
+        "(Department of Veterans Affairs and Department of Defense 2025)",
+        "(Furukawa et al. 2024)",
+        "(Espie 2025)"
+      ]
+    },
+    {
+      "chapter": 17,
+      "title": "17. Planejamento terapêutico",
+      "references": [
+        "(Perlis et al. 2005)",
+        "(Edinger e Carney 2014)",
+        "(Espie 2025)",
+        "(Edinger et al. 2021)"
+      ]
+    },
+    {
+      "chapter": 18,
+      "title": "18. Sessão inicial",
+      "references": [
+        "(Perlis et al. 2005)",
+        "(Edinger e Carney 2014)",
+        "(Espie 2025)"
+      ]
+    },
+    {
+      "chapter": 19,
+      "title": "19. Primeiras intervenções",
+      "references": [
+        "(Perlis et al. 2005)",
+        "(Edinger e Carney 2014)",
+        "(Department of Veterans Affairs and Department of Defense 2025)"
+      ]
+    },
+    {
+      "chapter": 20,
+      "title": "20. Revisão de dados e ajustes",
+      "references": [
+        "(Perlis et al. 2005)",
+        "(Edinger e Carney 2014)",
+        "(Department of Veterans Affairs and Department of Defense 2025)",
+        "(Espie 2025)"
+      ]
+    },
+    {
+      "chapter": 21,
+      "title": "21. Sessões cognitivas e experimentos",
+      "references": [
+        "(Harvey 2002)",
+        "(Furukawa et al. 2024)",
+        "(Perlis et al. 2005)",
+        "(Espie 2025)"
+      ]
+    },
+    {
+      "chapter": 22,
+      "title": "22. Consolidação e autonomia",
+      "references": [
+        "(Perlis et al. 2005)",
+        "(Edinger e Carney 2014)",
+        "(Espie 2025)"
+      ]
+    },
+    {
+      "chapter": 23,
+      "title": "23. Prevenção de recaída",
+      "references": [
+        "(Perlis et al. 2005)",
+        "(Edinger e Carney 2014)",
+        "(Espie 2025)"
+      ]
+    },
+    {
+      "chapter": 24,
+      "title": "24. TCC-I por videoconferência e recursos digitais",
+      "references": [
+        "(Gehrman et al. 2021)",
+        "(Arnedt et al. 2021)",
+        "(Kallestad et al. 2021)",
+        "(Riemann et al. 2023)",
+        "(Conselho Federal de Psicologia 2024)"
+      ]
+    },
+    {
+      "chapter": 25,
+      "title": "25. Comorbidades e contextos especiais",
+      "references": [
+        "(Hertenstein et al. 2022)",
+        "(Riemann et al. 2023)",
+        "(Department of Veterans Affairs and Department of Defense 2025)",
+        "(Espie 2025)"
+      ]
+    },
+    {
+      "chapter": 26,
+      "title": "26. Baixa adesão, resistência e resposta parcial",
+      "references": [
+        "(Perlis et al. 2005)",
+        "(Edinger e Carney 2014)",
+        "(Espie 2025)"
+      ]
+    },
+    {
+      "chapter": 27,
+      "title": "27. Quando o tratamento não está funcionando",
+      "references": [
+        "(Riemann et al. 2023)",
+        "(Department of Veterans Affairs and Department of Defense 2025)",
+        "(Espie 2025)",
+        "(Perlis et al. 2005)"
+      ]
+    },
+    {
+      "chapter": 28,
+      "title": "28. Do protocolo ao raciocínio clínico",
+      "references": [
+        "(Edinger et al. 2021)",
+        "(Riemann et al. 2023)",
+        "(Department of Veterans Affairs and Department of Defense 2025)",
+        "(Furukawa et al. 2024)",
+        "(Espie 2025)"
+      ]
+    }
+  ],
+  "distinct": [
+    "(Borbély 1982)",
+    "(Daan, Beersma, e Borbély 1984)",
+    "(Borbély et al. 2016)",
+    "(Espie 2025)",
+    "(Edinger et al. 2021)",
+    "(Riemann et al. 2023)",
+    "(Department of Veterans Affairs and Department of Defense 2025)",
+    "(Qaseem et al. 2016)",
+    "(Spielman, Saskin, e Thorpy 1987)",
+    "(Perlis et al. 2005)",
+    "(Edinger e Carney 2014)",
+    "(Harvey 2002)",
+    "(Espie et al. 2006)",
+    "(Furukawa et al. 2024)",
+    "(Hertenstein et al. 2022)",
+    "(Bootzin 1972)",
+    "(Demers Verreault et al. 2024)",
+    "(Gehrman et al. 2021)",
+    "(Arnedt et al. 2021)",
+    "(Kallestad et al. 2021)",
+    "(Conselho Federal de Psicologia 2024)"
+  ]
+}
