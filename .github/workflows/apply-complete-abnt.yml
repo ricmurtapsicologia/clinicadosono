@@ -1,0 +1,61 @@
+name: Aplicar referências ABNT completas
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/apply-complete-abnt.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validar e aplicar mapa
+        shell: bash
+        run: |
+          set -euo pipefail
+          python <<'PY'
+          import json,re,unicodedata
+          from pathlib import Path
+
+          def key(s):
+              s=''.join(c for c in unicodedata.normalize('NFD',s) if unicodedata.category(c)!='Mn').lower()
+              s=re.sub(r'[().,;:]',' ',s)
+              return re.sub(r'\s+',' ',s).strip()
+
+          inv=json.loads(Path('all-chapter-references.json').read_text(encoding='utf-8'))
+          mp=json.loads(Path('abnt-complete-map.json').read_text(encoding='utf-8'))
+          expected={key(x) for x in inv['distinct']}
+          missing=sorted(expected-set(mp))
+          extra=sorted(set(mp)-expected)
+          if missing: raise SystemExit('Referências sem mapeamento ABNT: '+repr(missing))
+          if extra: print('Aviso: chaves extras:',extra)
+
+          js='const ABNT_REFS='+json.dumps(mp,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')+';'
+          p=Path('index.html'); text=p.read_text(encoding='utf-8')
+          text,n=re.subn(r'const ABNT_REFS=\{.*?\};',lambda m:js,text,count=1,flags=re.S)
+          if n!=1: raise SystemExit('Objeto ABNT_REFS não localizado.')
+          old="if(!/^referências essenciais/i.test((h.textContent||'').trim()))return;"
+          new="if(!refKey(h.textContent).startsWith('referencias'))return;"
+          if old not in text and new not in text: raise SystemExit('Regra do cabeçalho de referências não localizada.')
+          text=text.replace(old,new)
+          p.write_text(text,encoding='utf-8')
+
+          total=sum(len(c['references']) for c in inv['chapters'])
+          lines=['# Auditoria final — referências ABNT','',f'- Capítulos verificados: {len(inv["chapters"])}',f'- Ocorrências bibliográficas: {total}',f'- Referências distintas: {len(expected)}',f'- Referências sem mapeamento: {len(missing)}','','Resultado: cobertura integral das referências bibliográficas finais dos 28 capítulos.']
+          Path('ABNT_REFERENCES_AUDIT.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
+          print('\n'.join(lines))
+          PY
+      - name: Commitar
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html ABNT_REFERENCES_AUDIT.md
+          git commit -m 'fix: aplica referências ABNT aos 28 capítulos'
+          git push origin HEAD:main
