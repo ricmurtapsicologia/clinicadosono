@@ -1,0 +1,50 @@
+name: Padronizar referências ABNT — execução v2
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/abnt-all-chapters-v2.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  abnt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Instalar dependências
+        run: python -m pip install --quiet beautifulsoup4 pybtex pylatexenc
+
+      - name: Restaurar fonte bibliográfica íntegra
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/tcci-src /tmp/tcci-bootstrap.b64 /tmp/tcci.tar.xz
+          mkdir -p /tmp/tcci-src
+          git ls-tree -r --name-only origin/v2-source-build bootstrap | sort | while read -r f; do
+            git show "origin/v2-source-build:$f"
+          done > /tmp/tcci-bootstrap.b64
+          base64 --decode /tmp/tcci-bootstrap.b64 > /tmp/tcci.tar.xz
+          xz -t /tmp/tcci.tar.xz
+          tar -xJf /tmp/tcci.tar.xz -C /tmp/tcci-src
+          test -n "$(find /tmp/tcci-src -name 'references.bib' -print -quit)"
+
+      - name: Padronizar todas as referências
+        run: python tools/apply_abnt_refs.py /tmp/tcci-src
+
+      - name: Commitar resultado
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html ABNT_REFERENCES_AUDIT.md abnt-references-map.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'fix: padroniza referências ABNT em todos os capítulos'
+          git push origin HEAD:main
