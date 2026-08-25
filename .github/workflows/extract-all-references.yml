@@ -1,0 +1,80 @@
+name: Extrair referências dos 28 capítulos
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/extract-all-references.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extrair referências
+        shell: bash
+        run: |
+          set -euo pipefail
+          python <<'PY'
+          import base64,gzip,json,re,unicodedata
+          from pathlib import Path
+          from html.parser import HTMLParser
+
+          names=['payload4/c1a.txt','payload4/c1b.txt','payload4/c1c.txt','payload4/c1d.txt','payload4/c2a.txt','payload4/c2b.txt','payload4/c2c.txt','payload4/c2d.txt','payload3/c3a.txt','payload3/c3b.txt','payload4/c3c.txt','payload4/c3d.txt','payload4/c4a.txt','payload4/c4b.txt','payload4/c4c.txt','payload4/c4d.txt']
+          b64=''.join(Path(n).read_text(encoding='utf-8').replace('\n','').replace('\r','').replace(' ','') for n in names)
+          docs=json.loads(gzip.decompress(base64.b64decode(b64)).decode('utf-8'))
+
+          class P(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.in_heading=False; self.heading=''; self.ref_mode=False; self.in_li=False; self.li=''; self.refs=[]
+              def handle_starttag(self,tag,attrs):
+                  if tag in ('h2','h3'): self.in_heading=True; self.heading=''
+                  if tag=='li' and self.ref_mode: self.in_li=True; self.li=''
+              def handle_endtag(self,tag):
+                  if tag in ('h2','h3') and self.in_heading:
+                      t=self.heading.strip().lower()
+                      t=''.join(c for c in unicodedata.normalize('NFD',t) if unicodedata.category(c)!='Mn')
+                      self.ref_mode=t.startswith('referencias')
+                      self.in_heading=False
+                  elif tag=='li' and self.in_li:
+                      s=re.sub(r'\s+',' ',self.li).strip()
+                      if s:self.refs.append(s)
+                      self.in_li=False
+                  elif tag in ('h2','h3') and self.ref_mode:
+                      self.ref_mode=False
+              def handle_data(self,data):
+                  if self.in_heading:self.heading+=data
+                  if self.in_li:self.li+=data
+
+          rows=[]
+          for d in docs:
+              n=d.get('num')
+              if not isinstance(n,int) or not 1<=n<=28: continue
+              p=P(); p.feed(d.get('html',''))
+              rows.append({'chapter':n,'title':d.get('title',''),'references':p.refs})
+          rows.sort(key=lambda x:x['chapter'])
+          distinct=[]; seen=set()
+          for r in rows:
+              for s in r['references']:
+                  if s not in seen: seen.add(s); distinct.append(s)
+          Path('all-chapter-references.json').write_text(json.dumps({'chapters':rows,'distinct':distinct},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          md=['# Referências extraídas dos 28 capítulos','',f'- Itens totais: {sum(len(r["references"]) for r in rows)}',f'- Referências distintas: {len(distinct)}','']
+          for r in rows:
+              md += [f'## Capítulo {r["chapter"]} — {r["title"]}','']
+              md += [f'- {x}' for x in r['references']] or ['- Nenhuma referência localizada.']
+              md.append('')
+          Path('ALL_CHAPTER_REFERENCES.md').write_text('\n'.join(md)+'\n',encoding='utf-8')
+          print(f'capítulos={len(rows)} totais={sum(len(r["references"]) for r in rows)} distintas={len(distinct)}')
+          PY
+      - name: Commitar inventário
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add all-chapter-references.json ALL_CHAPTER_REFERENCES.md
+          git commit -m 'chore: inventaria referências dos 28 capítulos'
+          git push origin HEAD:main
