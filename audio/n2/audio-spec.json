@@ -1,0 +1,16 @@
+{
+  "voice": "pt-BR-AntonioNeural",
+  "profile": "Sono em Dia / Ampulheta N2 — explain",
+  "opening_silence_ms": 130,
+  "ending_silence_ms": 240,
+  "target_dbfs": -18.0,
+  "peak_ceiling_dbfs": -1.2,
+  "compression": {
+    "threshold_db": -20.0,
+    "ratio": 2.0,
+    "attack_ms": 8.0,
+    "release_ms": 70.0
+  },
+  "format": "MP3 128 kbps, mono, 44.1 kHz",
+  "track_count": 28
+}

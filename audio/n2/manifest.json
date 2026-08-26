@@ -1,0 +1,204 @@
+{
+  "version": "n2-20260825",
+  "voice": "pt-BR-AntonioNeural",
+  "profile": "Padrão Sonoro Clínico Richelmy Murta — Sono em Dia / Ampulheta N2",
+  "format": "MP3 128 kbps, mono, 44.1 kHz",
+  "tracks": [
+    {
+      "id": "chapter-01",
+      "chapter": 1,
+      "title": "1. O sono como sistema regulado",
+      "url": "./audio/n2/chapter-01.mp3?v=n2-20260825",
+      "duration_seconds": 185.4
+    },
+    {
+      "id": "chapter-02",
+      "chapter": 2,
+      "title": "2. O que é transtorno de insônia",
+      "url": "./audio/n2/chapter-02.mp3?v=n2-20260825",
+      "duration_seconds": 203.3
+    },
+    {
+      "id": "chapter-03",
+      "chapter": 3,
+      "title": "3. Por que a insônia se mantém",
+      "url": "./audio/n2/chapter-03.mp3?v=n2-20260825",
+      "duration_seconds": 204.1
+    },
+    {
+      "id": "chapter-04",
+      "chapter": 4,
+      "title": "4. Modelos contemporâneos de manutenção",
+      "url": "./audio/n2/chapter-04.mp3?v=n2-20260825",
+      "duration_seconds": 197.4
+    },
+    {
+      "id": "chapter-05",
+      "chapter": 5,
+      "title": "5. Entrevista clínica do sono",
+      "url": "./audio/n2/chapter-05.mp3?v=n2-20260825",
+      "duration_seconds": 199.0
+    },
+    {
+      "id": "chapter-06",
+      "chapter": 6,
+      "title": "6. Diário do sono e métricas clínicas",
+      "url": "./audio/n2/chapter-06.mp3?v=n2-20260825",
+      "duration_seconds": 193.1
+    },
+    {
+      "id": "chapter-07",
+      "chapter": 7,
+      "title": "7. Medidas, instrumentos e monitoramento",
+      "url": "./audio/n2/chapter-07.mp3?v=n2-20260825",
+      "duration_seconds": 205.0
+    },
+    {
+      "id": "chapter-08",
+      "chapter": 8,
+      "title": "8. Diagnóstico diferencial e encaminhamento",
+      "url": "./audio/n2/chapter-08.mp3?v=n2-20260825",
+      "duration_seconds": 209.4
+    },
+    {
+      "id": "chapter-09",
+      "chapter": 9,
+      "title": "9. Formulação de caso em TCC-I",
+      "url": "./audio/n2/chapter-09.mp3?v=n2-20260825",
+      "duration_seconds": 217.3
+    },
+    {
+      "id": "chapter-10",
+      "chapter": 10,
+      "title": "10. Psicoeducação que muda comportamento",
+      "url": "./audio/n2/chapter-10.mp3?v=n2-20260825",
+      "duration_seconds": 198.9
+    },
+    {
+      "id": "chapter-11",
+      "chapter": 11,
+      "title": "11. Controle de estímulos",
+      "url": "./audio/n2/chapter-11.mp3?v=n2-20260825",
+      "duration_seconds": 198.8
+    },
+    {
+      "id": "chapter-12",
+      "chapter": 12,
+      "title": "12. Restrição e compressão do tempo na cama",
+      "url": "./audio/n2/chapter-12.mp3?v=n2-20260825",
+      "duration_seconds": 195.1
+    },
+    {
+      "id": "chapter-13",
+      "chapter": 13,
+      "title": "13. Ritmo circadiano, regularidade e rotina",
+      "url": "./audio/n2/chapter-13.mp3?v=n2-20260825",
+      "duration_seconds": 198.4
+    },
+    {
+      "id": "chapter-14",
+      "chapter": 14,
+      "title": "14. Intervenções cognitivas",
+      "url": "./audio/n2/chapter-14.mp3?v=n2-20260825",
+      "duration_seconds": 203.7
+    },
+    {
+      "id": "chapter-15",
+      "chapter": 15,
+      "title": "15. Preocupação, vigilância e esforço para dormir",
+      "url": "./audio/n2/chapter-15.mp3?v=n2-20260825",
+      "duration_seconds": 197.3
+    },
+    {
+      "id": "chapter-16",
+      "chapter": 16,
+      "title": "16. Higiene do sono no lugar certo",
+      "url": "./audio/n2/chapter-16.mp3?v=n2-20260825",
+      "duration_seconds": 204.0
+    },
+    {
+      "id": "chapter-17",
+      "chapter": 17,
+      "title": "17. Planejamento terapêutico",
+      "url": "./audio/n2/chapter-17.mp3?v=n2-20260825",
+      "duration_seconds": 204.9
+    },
+    {
+      "id": "chapter-18",
+      "chapter": 18,
+      "title": "18. Sessão inicial",
+      "url": "./audio/n2/chapter-18.mp3?v=n2-20260825",
+      "duration_seconds": 202.9
+    },
+    {
+      "id": "chapter-19",
+      "chapter": 19,
+      "title": "19. Primeiras intervenções",
+      "url": "./audio/n2/chapter-19.mp3?v=n2-20260825",
+      "duration_seconds": 203.1
+    },
+    {
+      "id": "chapter-20",
+      "chapter": 20,
+      "title": "20. Revisão de dados e ajustes",
+      "url": "./audio/n2/chapter-20.mp3?v=n2-20260825",
+      "duration_seconds": 209.8
+    },
+    {
+      "id": "chapter-21",
+      "chapter": 21,
+      "title": "21. Sessões cognitivas e experimentos",
+      "url": "./audio/n2/chapter-21.mp3?v=n2-20260825",
+      "duration_seconds": 200.3
+    },
+    {
+      "id": "chapter-22",
+      "chapter": 22,
+      "title": "22. Consolidação e autonomia",
+      "url": "./audio/n2/chapter-22.mp3?v=n2-20260825",
+      "duration_seconds": 198.8
+    },
+    {
+      "id": "chapter-23",
+      "chapter": 23,
+      "title": "23. Prevenção de recaída",
+      "url": "./audio/n2/chapter-23.mp3?v=n2-20260825",
+      "duration_seconds": 203.2
+    },
+    {
+      "id": "chapter-24",
+      "chapter": 24,
+      "title": "24. TCC-I por videoconferência e recursos digitais",
+      "url": "./audio/n2/chapter-24.mp3?v=n2-20260825",
+      "duration_seconds": 216.1
+    },
+    {
+      "id": "chapter-25",
+      "chapter": 25,
+      "title": "25. Comorbidades e contextos especiais",
+      "url": "./audio/n2/chapter-25.mp3?v=n2-20260825",
+      "duration_seconds": 211.7
+    },
+    {
+      "id": "chapter-26",
+      "chapter": 26,
+      "title": "26. Baixa adesão, resistência e resposta parcial",
+      "url": "./audio/n2/chapter-26.mp3?v=n2-20260825",
+      "duration_seconds": 207.0
+    },
+    {
+      "id": "chapter-27",
+      "chapter": 27,
+      "title": "27. Quando o tratamento não está funcionando",
+      "url": "./audio/n2/chapter-27.mp3?v=n2-20260825",
+      "duration_seconds": 219.2
+    },
+    {
+      "id": "chapter-28",
+      "chapter": 28,
+      "title": "28. Do protocolo ao raciocínio clínico",
+      "url": "./audio/n2/chapter-28.mp3?v=n2-20260825",
+      "duration_seconds": 202.8
+    }
+  ]
+}
