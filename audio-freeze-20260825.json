@@ -2,7 +2,7 @@
   "frozen_at": "2026-08-25",
   "reason": "Congelamento anterior à migração dos 28 capítulos de SpeechSynthesis para MP3 N2",
   "source": {
-    "index.html": "d3973409c56c527f20c0b7115f639bcf6a0542ee",
+    "index.html": "7ec0b5129ddabcb2809f23655abe331fa005c21e",
     "content_source": "payload3/payload4 compactados carregados pelo próprio index.html"
   },
   "legacy_voice": "SpeechSynthesisUtterance pt-BR, rate 1.02, voz escolhida pelo navegador/dispositivo",
