@@ -1,0 +1,69 @@
+name: Gerar 28 audios N3 do livro
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/generate_chapter_audio_n3.py'
+      - 'scripts/patch_audio_player_n3.py'
+      - 'payload3/**'
+      - 'payload4/**'
+      - 'AUDIO_N3_STANDARD.md'
+      - '.github/workflows/generate-chapter-audio-n3.yml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: clinicadosono-audio-n3
+  cancel-in-progress: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          python -m pip install --upgrade pip
+          pip install edge-tts pydub beautifulsoup4
+      - name: Generate N3 audio
+        run: python scripts/generate_chapter_audio_n3.py
+      - name: Patch player N3
+        run: python scripts/patch_audio_player_n3.py
+      - name: Smoke test N3
+        run: |
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          files=sorted(Path('audio/n3').glob('chapter-*.mp3'))
+          expected=[f'chapter-{i:02d}' for i in range(1,29)]
+          assert [p.stem for p in files]==expected
+          manifest=json.loads(Path('audio/n3/manifest.json').read_text(encoding='utf-8'))
+          assert manifest['version']=='n3-20260831' and len(manifest['tracks'])==28
+          for p in files:
+              info=json.loads(subprocess.check_output(['ffprobe','-v','error','-select_streams','a:0','-show_entries','stream=channels,sample_rate,duration','-of','json',str(p)],text=True))['streams'][0]
+              assert int(info['channels'])==1 and int(info['sample_rate'])==44100 and float(info['duration'])>0
+          idx=Path('index.html').read_text(encoding='utf-8')
+          assert 'speechSynthesis' not in idx and 'SpeechSynthesisUtterance' not in idx
+          assert './audio/n3/chapter-' in idx and 'AUDIO_N3_VERSION' in idx
+          assert './audio/n2/chapter-' not in idx
+          print('PASS: 28/28 N3-C; player exclusivamente N3.')
+          PY
+      - name: Commit generated media
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audio/n3 roteiros/audio-n3 index.html
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "build: publicar 28 audios N3 da Clinica do Sono"
+          git pull --rebase --autostash origin main
+          git push origin HEAD:main
