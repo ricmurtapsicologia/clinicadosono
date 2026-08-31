@@ -23,11 +23,11 @@ function readingTime(d){const n=strip(d.html).split(/\s+/).filter(Boolean).lengt
 function isAudioChapter(d){return Number(d?.num)>=1&&Number(d?.num)<=28}
 function goto(id){location.hash=id||'home'}
 function audioMarkup(d){return `<section class="audio-guide" aria-label="Áudio explicativo do capítulo"><div class="audio-guide-top"><div class="audio-guide-icon" aria-hidden="true">♪</div><div><div class="audio-guide-kicker">Áudio explicativo</div><div class="audio-guide-title">Resumo narrado do capítulo ${d.num}</div><p class="audio-guide-desc">Cerca de 3 minutos, com os conceitos e decisões clínicas centrais deste capítulo.</p></div></div><div class="audio-controls"><button id="audioPlay" class="audio-btn play" type="button">▶ Ouvir áudio</button><button id="audioStop" class="audio-btn stop" type="button">■ Parar</button><span id="audioStatus" class="audio-status" aria-live="polite">Pronto para ouvir.</span></div></section>`}
-const AUDIO_N2_VERSION='n2-20260825';
+const AUDIO_N3_VERSION='n3-20260831';
 let chapterAudio=null;
-function chapterAudioUrl(d){return `./audio/n2/chapter-${String(d.num).padStart(2,'0')}.mp3?v=${AUDIO_N2_VERSION}`}
+function chapterAudioUrl(d){return `./audio/n3/chapter-${String(d.num).padStart(2,'0')}.mp3?v=${AUDIO_N3_VERSION}`}
 function updateAudioUI(message){const play=$('#audioPlay'),status=$('#audioStatus');if(play){if(audioState.playing&&audioState.paused)play.textContent='▶ Continuar';else if(audioState.playing)play.textContent='⏸ Pausar';else play.textContent='▶ Ouvir áudio'}if(status&&message)status.textContent=message}
-function persistAudio(){if(!chapterAudio||!audioState.chapter||!Number.isFinite(chapterAudio.currentTime))return;try{const m=JSON.parse(localStorage.getItem('tcci.audio.n2')||'{}');m[audioState.chapter]=Math.floor(chapterAudio.currentTime);localStorage.setItem('tcci.audio.n2',JSON.stringify(m))}catch(e){}}
+function persistAudio(){if(!chapterAudio||!audioState.chapter||!Number.isFinite(chapterAudio.currentTime))return;try{const m=JSON.parse(localStorage.getItem('tcci.audio.n3')||'{}');m[audioState.chapter]=Math.floor(chapterAudio.currentTime);localStorage.setItem('tcci.audio.n3',JSON.stringify(m))}catch(e){}}
 function stopAudio(message='Pronto para ouvir.'){audioToken++;if(chapterAudio){persistAudio();chapterAudio.pause();chapterAudio.removeAttribute('src');try{chapterAudio.load()}catch(e){}}chapterAudio=null;audioState={chapter:'',chunks:[],index:0,playing:false,paused:false};updateAudioUI(message)}
 function toggleAudio(d){
   if(audioState.playing&&audioState.chapter===d.id&&chapterAudio){
@@ -37,9 +37,9 @@ function toggleAudio(d){
   }
   stopAudio();audioState={chapter:d.id,chunks:[],index:0,playing:true,paused:false};
   chapterAudio=new Audio(chapterAudioUrl(d));chapterAudio.preload='metadata';
-  chapterAudio.addEventListener('loadedmetadata',()=>{try{const m=JSON.parse(localStorage.getItem('tcci.audio.n2')||'{}');const t=Number(m[d.id]||0);if(t>0&&t<chapterAudio.duration-2)chapterAudio.currentTime=t}catch(e){}},{once:true});
+  chapterAudio.addEventListener('loadedmetadata',()=>{try{const m=JSON.parse(localStorage.getItem('tcci.audio.n3')||'{}');const t=Number(m[d.id]||0);if(t>0&&t<chapterAudio.duration-2)chapterAudio.currentTime=t}catch(e){}},{once:true});
   chapterAudio.addEventListener('timeupdate',()=>{if(Math.floor(chapterAudio.currentTime)%5===0)persistAudio()});
-  chapterAudio.addEventListener('ended',()=>{try{const m=JSON.parse(localStorage.getItem('tcci.audio.n2')||'{}');delete m[d.id];localStorage.setItem('tcci.audio.n2',JSON.stringify(m))}catch(e){}audioState.playing=false;audioState.paused=false;chapterAudio=null;updateAudioUI('Áudio concluído.')});
+  chapterAudio.addEventListener('ended',()=>{try{const m=JSON.parse(localStorage.getItem('tcci.audio.n3')||'{}');delete m[d.id];localStorage.setItem('tcci.audio.n3',JSON.stringify(m))}catch(e){}audioState.playing=false;audioState.paused=false;chapterAudio=null;updateAudioUI('Áudio concluído.')});
   chapterAudio.addEventListener('error',()=>{audioState.playing=false;audioState.paused=false;updateAudioUI('Áudio temporariamente indisponível.')});
   updateAudioUI('Reproduzindo resumo do capítulo…');chapterAudio.play().catch(()=>{audioState.playing=false;updateAudioUI('Áudio temporariamente indisponível.')})
 }

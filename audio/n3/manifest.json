@@ -1,0 +1,357 @@
+{
+  "version": "n3-20260831",
+  "voice": "pt-BR-AntonioNeural",
+  "profile": "N3-C Natural — Clínica do Sono",
+  "pronunciation_dictionary": true,
+  "format": "MP3 128 kbps, mono, 44.1 kHz",
+  "tracks": [
+    {
+      "id": "chapter-01",
+      "chapter": 1,
+      "title": "1. O sono como sistema regulado",
+      "url": "./audio/n3/chapter-01.mp3?v=n3-20260831",
+      "duration_seconds": 215.4,
+      "pronunciation_dictionary": true,
+      "turns": 34,
+      "intents": [
+        "explain"
+      ]
+    },
+    {
+      "id": "chapter-02",
+      "chapter": 2,
+      "title": "2. O que é transtorno de insônia",
+      "url": "./audio/n3/chapter-02.mp3?v=n3-20260831",
+      "duration_seconds": 231.2,
+      "pronunciation_dictionary": true,
+      "turns": 36,
+      "intents": [
+        "explain",
+        "instruction"
+      ]
+    },
+    {
+      "id": "chapter-03",
+      "chapter": 3,
+      "title": "3. Por que a insônia se mantém",
+      "url": "./audio/n3/chapter-03.mp3?v=n3-20260831",
+      "duration_seconds": 232.5,
+      "pronunciation_dictionary": true,
+      "turns": 36,
+      "intents": [
+        "explain",
+        "question"
+      ]
+    },
+    {
+      "id": "chapter-04",
+      "chapter": 4,
+      "title": "4. Modelos contemporâneos de manutenção",
+      "url": "./audio/n3/chapter-04.mp3?v=n3-20260831",
+      "duration_seconds": 225.7,
+      "pronunciation_dictionary": true,
+      "turns": 36,
+      "intents": [
+        "explain",
+        "instruction",
+        "question"
+      ]
+    },
+    {
+      "id": "chapter-05",
+      "chapter": 5,
+      "title": "5. Entrevista clínica do sono",
+      "url": "./audio/n3/chapter-05.mp3?v=n3-20260831",
+      "duration_seconds": 229.5,
+      "pronunciation_dictionary": true,
+      "turns": 37,
+      "intents": [
+        "explain"
+      ]
+    },
+    {
+      "id": "chapter-06",
+      "chapter": 6,
+      "title": "6. Diário do sono e métricas clínicas",
+      "url": "./audio/n3/chapter-06.mp3?v=n3-20260831",
+      "duration_seconds": 215.9,
+      "pronunciation_dictionary": true,
+      "turns": 33,
+      "intents": [
+        "explain",
+        "question"
+      ]
+    },
+    {
+      "id": "chapter-07",
+      "chapter": 7,
+      "title": "7. Medidas, instrumentos e monitoramento",
+      "url": "./audio/n3/chapter-07.mp3?v=n3-20260831",
+      "duration_seconds": 231.0,
+      "pronunciation_dictionary": true,
+      "turns": 36,
+      "intents": [
+        "explain",
+        "question"
+      ]
+    },
+    {
+      "id": "chapter-08",
+      "chapter": 8,
+      "title": "8. Diagnóstico diferencial e encaminhamento",
+      "url": "./audio/n3/chapter-08.mp3?v=n3-20260831",
+      "duration_seconds": 243.8,
+      "pronunciation_dictionary": true,
+      "turns": 39,
+      "intents": [
+        "explain"
+      ]
+    },
+    {
+      "id": "chapter-09",
+      "chapter": 9,
+      "title": "9. Formulação de caso em TCC-I",
+      "url": "./audio/n3/chapter-09.mp3?v=n3-20260831",
+      "duration_seconds": 245.9,
+      "pronunciation_dictionary": true,
+      "turns": 37,
+      "intents": [
+        "explain"
+      ]
+    },
+    {
+      "id": "chapter-10",
+      "chapter": 10,
+      "title": "10. Psicoeducação que muda comportamento",
+      "url": "./audio/n3/chapter-10.mp3?v=n3-20260831",
+      "duration_seconds": 227.1,
+      "pronunciation_dictionary": true,
+      "turns": 39,
+      "intents": [
+        "explain",
+        "question"
+      ]
+    },
+    {
+      "id": "chapter-11",
+      "chapter": 11,
+      "title": "11. Controle de estímulos",
+      "url": "./audio/n3/chapter-11.mp3?v=n3-20260831",
+      "duration_seconds": 225.2,
+      "pronunciation_dictionary": true,
+      "turns": 35,
+      "intents": [
+        "explain"
+      ]
+    },
+    {
+      "id": "chapter-12",
+      "chapter": 12,
+      "title": "12. Restrição e compressão do tempo na cama",
+      "url": "./audio/n3/chapter-12.mp3?v=n3-20260831",
+      "duration_seconds": 221.7,
+      "pronunciation_dictionary": true,
+      "turns": 35,
+      "intents": [
+        "explain",
+        "question"
+      ]
+    },
+    {
+      "id": "chapter-13",
+      "chapter": 13,
+      "title": "13. Ritmo circadiano, regularidade e rotina",
+      "url": "./audio/n3/chapter-13.mp3?v=n3-20260831",
+      "duration_seconds": 224.5,
+      "pronunciation_dictionary": true,
+      "turns": 36,
+      "intents": [
+        "explain"
+      ]
+    },
+    {
+      "id": "chapter-14",
+      "chapter": 14,
+      "title": "14. Intervenções cognitivas",
+      "url": "./audio/n3/chapter-14.mp3?v=n3-20260831",
+      "duration_seconds": 231.5,
+      "pronunciation_dictionary": true,
+      "turns": 37,
+      "intents": [
+        "explain"
+      ]
+    },
+    {
+      "id": "chapter-15",
+      "chapter": 15,
+      "title": "15. Preocupação, vigilância e esforço para dormir",
+      "url": "./audio/n3/chapter-15.mp3?v=n3-20260831",
+      "duration_seconds": 220.7,
+      "pronunciation_dictionary": true,
+      "turns": 34,
+      "intents": [
+        "explain"
+      ]
+    },
+    {
+      "id": "chapter-16",
+      "chapter": 16,
+      "title": "16. Higiene do sono no lugar certo",
+      "url": "./audio/n3/chapter-16.mp3?v=n3-20260831",
+      "duration_seconds": 236.3,
+      "pronunciation_dictionary": true,
+      "turns": 40,
+      "intents": [
+        "explain"
+      ]
+    },
+    {
+      "id": "chapter-17",
+      "chapter": 17,
+      "title": "17. Planejamento terapêutico",
+      "url": "./audio/n3/chapter-17.mp3?v=n3-20260831",
+      "duration_seconds": 239.6,
+      "pronunciation_dictionary": true,
+      "turns": 41,
+      "intents": [
+        "explain"
+      ]
+    },
+    {
+      "id": "chapter-18",
+      "chapter": 18,
+      "title": "18. Sessão inicial",
+      "url": "./audio/n3/chapter-18.mp3?v=n3-20260831",
+      "duration_seconds": 233.1,
+      "pronunciation_dictionary": true,
+      "turns": 38,
+      "intents": [
+        "explain"
+      ]
+    },
+    {
+      "id": "chapter-19",
+      "chapter": 19,
+      "title": "19. Primeiras intervenções",
+      "url": "./audio/n3/chapter-19.mp3?v=n3-20260831",
+      "duration_seconds": 229.3,
+      "pronunciation_dictionary": true,
+      "turns": 39,
+      "intents": [
+        "explain"
+      ]
+    },
+    {
+      "id": "chapter-20",
+      "chapter": 20,
+      "title": "20. Revisão de dados e ajustes",
+      "url": "./audio/n3/chapter-20.mp3?v=n3-20260831",
+      "duration_seconds": 233.0,
+      "pronunciation_dictionary": true,
+      "turns": 38,
+      "intents": [
+        "explain"
+      ]
+    },
+    {
+      "id": "chapter-21",
+      "chapter": 21,
+      "title": "21. Sessões cognitivas e experimentos",
+      "url": "./audio/n3/chapter-21.mp3?v=n3-20260831",
+      "duration_seconds": 222.7,
+      "pronunciation_dictionary": true,
+      "turns": 35,
+      "intents": [
+        "explain",
+        "question"
+      ]
+    },
+    {
+      "id": "chapter-22",
+      "chapter": 22,
+      "title": "22. Consolidação e autonomia",
+      "url": "./audio/n3/chapter-22.mp3?v=n3-20260831",
+      "duration_seconds": 223.3,
+      "pronunciation_dictionary": true,
+      "turns": 35,
+      "intents": [
+        "explain"
+      ]
+    },
+    {
+      "id": "chapter-23",
+      "chapter": 23,
+      "title": "23. Prevenção de recaída",
+      "url": "./audio/n3/chapter-23.mp3?v=n3-20260831",
+      "duration_seconds": 231.9,
+      "pronunciation_dictionary": true,
+      "turns": 38,
+      "intents": [
+        "explain"
+      ]
+    },
+    {
+      "id": "chapter-24",
+      "chapter": 24,
+      "title": "24. TCC-I por videoconferência e recursos digitais",
+      "url": "./audio/n3/chapter-24.mp3?v=n3-20260831",
+      "duration_seconds": 246.8,
+      "pronunciation_dictionary": true,
+      "turns": 39,
+      "intents": [
+        "explain",
+        "question"
+      ]
+    },
+    {
+      "id": "chapter-25",
+      "chapter": 25,
+      "title": "25. Comorbidades e contextos especiais",
+      "url": "./audio/n3/chapter-25.mp3?v=n3-20260831",
+      "duration_seconds": 240.8,
+      "pronunciation_dictionary": true,
+      "turns": 37,
+      "intents": [
+        "explain"
+      ]
+    },
+    {
+      "id": "chapter-26",
+      "chapter": 26,
+      "title": "26. Baixa adesão, resistência e resposta parcial",
+      "url": "./audio/n3/chapter-26.mp3?v=n3-20260831",
+      "duration_seconds": 235.4,
+      "pronunciation_dictionary": true,
+      "turns": 42,
+      "intents": [
+        "explain",
+        "question"
+      ]
+    },
+    {
+      "id": "chapter-27",
+      "chapter": 27,
+      "title": "27. Quando o tratamento não está funcionando",
+      "url": "./audio/n3/chapter-27.mp3?v=n3-20260831",
+      "duration_seconds": 246.3,
+      "pronunciation_dictionary": true,
+      "turns": 41,
+      "intents": [
+        "explain",
+        "question"
+      ]
+    },
+    {
+      "id": "chapter-28",
+      "chapter": 28,
+      "title": "28. Do protocolo ao raciocínio clínico",
+      "url": "./audio/n3/chapter-28.mp3?v=n3-20260831",
+      "duration_seconds": 232.8,
+      "pronunciation_dictionary": true,
+      "turns": 37,
+      "intents": [
+        "explain"
+      ]
+    }
+  ]
+}

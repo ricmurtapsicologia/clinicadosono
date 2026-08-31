@@ -1,0 +1,12 @@
+{
+  "version": "n3-20260831",
+  "voice": "pt-BR-AntonioNeural",
+  "profile": "N3-C Natural — explain",
+  "prosody": "semantic-intent + respiratory-units + deterministic-content-jitter",
+  "pronunciation_dictionary": true,
+  "ambient_audio": false,
+  "target_dbfs": -18.0,
+  "peak_ceiling_dbfs": -1.2,
+  "format": "MP3 128 kbps, mono, 44.1 kHz",
+  "track_count": 28
+}
