@@ -14,10 +14,15 @@ VOICE='pt-BR-AntonioNeural';VERSION='n3-20260831';MAX_WORDS=430;TARGET_DBFS=-18.
 SOFT={'mas','porém','porem','contudo','entretanto','porque','quando','enquanto','então','entao','assim','agora','portanto','se','como','além','alem','ainda','depois','antes','embora'}
 INSTRUCTIONS=('observe','imagine','pense','perceba','note','considere','guarde','repare')
 CONCLUSION=('em resumo','para concluir','por fim','em síntese','em sintese','o ponto principal')
+PRON={r'\bTCC-I\b':'T C C I',r'\bTCC\b':'T C C',r'\bRPD\b':'R P D',r'\bPSP\b':'P S P',r'\bATS\b':'A T S',r'\bCBMMG\b':'C B M M G',r'\bOMS\b':'O M S'}
 
 
 def norm(t):return re.sub(r'\s+',' ',t or '').strip()
 def tokens(t):return re.findall(r'[\wÀ-ÿ]+',t.lower(),flags=re.UNICODE)
+def speakable(text):
+    out=text
+    for pat,repl in PRON.items():out=re.sub(pat,repl,out,flags=re.I)
+    return norm(out)
 def stable(text,lo,hi,salt):
     h=hashlib.sha256((salt+'|'+norm(text)).encode()).digest();u=int.from_bytes(h[:4],'big')/0xffffffff
     return lo+int(round(u*(hi-lo)))
@@ -46,7 +51,6 @@ def breath_units(text):
         if start<len(words):out.append(' '.join(words[start:]).strip())
     if tokens(' '.join(out))!=tokens(text):raise RuntimeError('Gate lexical N3 falhou')
     return out
-
 def prosody(text):
     i=classify(text);rate=-4+{'explain':0,'question':1,'instruction':-3,'conclusion':-2,'emphasis':1}[i];pitch=-1+{'explain':0,'question':2,'instruction':-1,'conclusion':-1,'emphasis':1}[i]
     rate+=stable(text,-1,1,'rate');pitch+=stable(text,-1,1,'pitch')
@@ -86,7 +90,7 @@ async def synth(text,rate,pitch,path,sem):
     async with sem:
         for attempt in range(1,4):
             try:
-                c=edge_tts.Communicate(text=text,voice=VOICE,rate=rate,pitch=pitch,volume='+0%');await asyncio.wait_for(c.save(str(path)),timeout=55);return
+                c=edge_tts.Communicate(text=speakable(text),voice=VOICE,rate=rate,pitch=pitch,volume='+0%');await asyncio.wait_for(c.save(str(path)),timeout=55);return
             except Exception:
                 if attempt==3:raise
                 await asyncio.sleep(.9*attempt)
@@ -103,14 +107,14 @@ async def render(d,sem):
     if audio.dBFS!=float('-inf'):audio=audio.apply_gain(TARGET_DBFS-audio.dBFS)
     if audio.max_dBFS>-1.2:audio=audio.apply_gain(-1.2-audio.max_dBFS)
     OUT.mkdir(parents=True,exist_ok=True);target=OUT/f'{key}.mp3';audio.export(target,format='mp3',bitrate='128k',parameters=['-ac','1','-ar','44100'])
-    return {'id':key,'chapter':num,'title':norm(d.get('title')),'url':f'./audio/n3/{key}.mp3?v={VERSION}','duration_seconds':round(len(audio)/1000,1),'turns':len(turns),'intents':sorted(set(intents))}
+    return {'id':key,'chapter':num,'title':norm(d.get('title')),'url':f'./audio/n3/{key}.mp3?v={VERSION}','duration_seconds':round(len(audio)/1000,1),'pronunciation_dictionary':True,'turns':len(turns),'intents':sorted(set(intents))}
 
 async def main():
     docs=load_docs();OUT.mkdir(parents=True,exist_ok=True);TMP.mkdir(parents=True,exist_ok=True);sem=asyncio.Semaphore(4);rows=[]
     for d in docs:rows.append(await render(d,sem))
-    manifest={'version':VERSION,'voice':VOICE,'profile':'N3-C Natural — Clínica do Sono','format':'MP3 128 kbps, mono, 44.1 kHz','tracks':rows}
+    manifest={'version':VERSION,'voice':VOICE,'profile':'N3-C Natural — Clínica do Sono','pronunciation_dictionary':True,'format':'MP3 128 kbps, mono, 44.1 kHz','tracks':rows}
     (OUT/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    (OUT/'audio-spec.json').write_text(json.dumps({'version':VERSION,'voice':VOICE,'profile':'N3-C Natural — explain','prosody':'semantic-intent + respiratory-units + deterministic-content-jitter','ambient_audio':False,'target_dbfs':TARGET_DBFS,'peak_ceiling_dbfs':-1.2,'format':'MP3 128 kbps, mono, 44.1 kHz','track_count':28},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    (OUT/'audio-spec.json').write_text(json.dumps({'version':VERSION,'voice':VOICE,'profile':'N3-C Natural — explain','prosody':'semantic-intent + respiratory-units + deterministic-content-jitter','pronunciation_dictionary':True,'ambient_audio':False,'target_dbfs':TARGET_DBFS,'peak_ceiling_dbfs':-1.2,'format':'MP3 128 kbps, mono, 44.1 kHz','track_count':28},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     shutil.rmtree(TMP,ignore_errors=True);print('Concluído: 28 capítulos N3-C.')
 
 if __name__=='__main__':asyncio.run(main())
