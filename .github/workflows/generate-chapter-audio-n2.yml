@@ -1,75 +1,17 @@
-name: Gerar 28 audios N2 do livro
+name: LEGACY — Gerar 28 audios N2 do livro
 
+# Workflow congelado após adoção do N3 Natural em 31/08/2026.
+# Mantido somente para rollback deliberado. Não reage mais a push/payload.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/generate_chapter_audio_n2.py'
-      - 'scripts/patch_audio_player_n2.py'
-      - 'payload3/**'
-      - 'payload4/**'
-      - '.github/workflows/generate-chapter-audio-n2.yml'
   workflow_dispatch: {}
 
 permissions:
-  contents: write
-
-concurrency:
-  group: clinicadosono-audio-n2
-  cancel-in-progress: true
+  contents: read
 
 jobs:
-  generate:
+  legacy-info:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      - name: Install dependencies
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y ffmpeg
-          python -m pip install --upgrade pip
-          pip install edge-tts pydub beautifulsoup4
-      - name: Generate audio
-        run: python scripts/generate_chapter_audio_n2.py
-      - name: Patch player
-        run: python scripts/patch_audio_player_n2.py
-      - name: Validate
-        run: |
-          python - <<'PY'
-          import json
-          import subprocess
-          from pathlib import Path
-          files=sorted(Path('audio/n2').glob('chapter-*.mp3'))
-          expected=[f'chapter-{i:02d}' for i in range(1,29)]
-          assert [p.stem for p in files]==expected
-          manifest=json.loads(Path('audio/n2/manifest.json').read_text(encoding='utf-8'))
-          assert len(manifest['tracks'])==28
-          for p in files:
-              out=subprocess.check_output(['ffprobe','-v','error','-select_streams','a:0','-show_entries','stream=channels,sample_rate,duration','-of','json',str(p)],text=True)
-              info=json.loads(out)['streams'][0]
-              assert int(info['channels'])==1
-              assert int(info['sample_rate'])==44100
-              assert float(info['duration'])>0
-          idx=Path('index.html').read_text(encoding='utf-8')
-          assert 'speechSynthesis' not in idx
-          assert 'SpeechSynthesisUtterance' not in idx
-          assert 'new Audio(chapterAudioUrl(d))' in idx
-          print('28/28 MP3 N2; browser TTS removed.')
-          PY
-      - name: Commit generated media
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add audio/n2 roteiros/audio-n2 index.html
-          if git diff --cached --quiet; then
-            echo "No changes"
-            exit 0
-          fi
-          git commit -m "build: publicar 28 audios N2 do livro clinico"
-          git pull --rebase --autostash origin main
-          git push origin HEAD:main
+      - run: |
+          echo "N2 congelado. Runtime canônico: N3 Natural."
+          echo "Use o histórico Git/audio/n2 apenas para comparação ou rollback explícito."
